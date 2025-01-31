@@ -1,1 +1,697 @@
-<h1>Mon Portfolio</h1>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Data Science</title>
+    <style>
+        /* Nouvelle palette de couleurs raffinée */
+        :root {
+            --color-background: #F8E7E7;  /* Rose poudré très clair */
+            --color-primary: #B5A8B9;     /* Mauve délicat */
+            --color-secondary: #97B3C6;    /* Bleu doux */
+            --color-accent: #8E7F97;      /* Violet sophistiqué */
+            --color-text: #303030;        /* Texte foncé */
+            --color-light: #F5F5F5;       /* Blanc cassé */
+            --color-card: #FFF1F1;        /* Rose très pâle */
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        /* Header stylé */
+        header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            color: var(--color-light);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation élégante */
+        nav {
+            background-color: var(--color-accent);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--color-light);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Sections avec style moderne */
+        section {
+            margin: 3rem auto;
+            padding: 2rem;
+            max-width: 1200px;
+            background-color: var(--color-card);
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        section h2 {
+            color: var(--color-accent);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--color-secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Grille de compétences améliorée */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--color-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-category li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--color-secondary);
+        }
+
+        /* Projets avec style moderne */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--color-light);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Style contact moderne */
+        .contact-info {
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--color-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* Footer élégant */
+        footer {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+            color: var(--color-light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+		.languages {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.language-card {
+    perspective: 1000px;
+    width: 150px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.language-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.language-card:hover .language-card-inner {
+    transform: rotateY(180deg);
+}
+
+.language-card-front, .language-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.language-card-front {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.language-card-back {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: rotateY(180deg);
+}
+#contact {
+    margin-top: 3rem;
+    padding: 2rem;
+    background-color: var(--color-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#contact h2 {
+    color: var(--color-accent);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--color-secondary);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.contact-card {
+    background-color: var(--color-card);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 280px;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    color: var(--color-primary);
+}
+
+.contact-details a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    color: var(--color-secondary);
+}
+.tool-logo {
+    width: 30px; /* Taille de l'image (ajustez selon vos préférences) */
+    height: 30px;
+    margin-right: 0.5rem; /* Espacement entre l'image et le texte */
+    vertical-align: middle;
+    border-radius: 5px; /* Optionnel : ajoute un effet arrondi */
+}
+#featured-projects {
+    text-align: center;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: var(--color-light);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+#featured-projects h2 {
+    color: var(--color-accent);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.project-links a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.project-links a:hover {
+    color: var(--color-primary);
+    transform: translateY(-3px);
+}
+/* Conteneur global */
+#diplomes {
+    text-align: center;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#diplomes h2 {
+    color: var(--color-accent);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Conteneur des cartes */
+.card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+/* Style des cartes */
+.card {
+    width: 250px;
+    height: 150px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Faces des cartes */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+}
+
+.card-front {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.card-back {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+#loisirs {
+    text-align: center;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-light);
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#loisirs h2 {
+    color: var(--color-accent);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--color-secondary);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+/* Conteneur des cartes */
+.loisirs-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.loisir-card {
+    background-color: var(--color-card);
+    border-radius: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1rem;
+    width: 250px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.loisir-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Titre des loisirs */
+.loisir-card h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Images des loisirs */
+.loisir-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Assia Aouimeur</h1>
+        <p>Data | Étudiante en deuxième années BUT Sciences des Données</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <h2>À propos de moi ...</h2>
+        <p>Je suis étudiante en BUT Sciences des Données, spécialisée en Exploration et Modélisation Statistique (EMS). Passionnée par l’analyse et la modélisation, j’utilise mes compétences pour explorer les données et proposer des solutions adaptées. </p>
+    </section>
+
+    <section id="skills">
+    <h2>Compétences</h2>
+    <div class="skills-container">
+        <div class="skill-category">
+            <h2>Outils</h2>
+            <ul>
+                <li>
+                    <img src="G:\html\portfolio_assia\image\python_logo.png" alt="Python" class="tool-logo"> Python
+                </li>
+                <li>
+                    <img src="G:\html\portfolio_assia\image\logito_r.png" alt="R Studio" class="tool-logo"> R Studio
+                </li>
+                <li>
+                    <img src="G:\html\portfolio_assia\image\sql_logo.png"alt="SQL" class="tool-logo"> SQL
+                </li>
+                <li>
+                    <img src="G:\html\portfolio_assia\image\excel_logo.png" alt="Excel" class="tool-logo"> Excel
+                </li>
+				 <li>
+                    <img src="G:\html\portfolio_assia\image\logito_pbix.png" alt="Excel" class="tool-logo"> Power Bi
+                </li>
+				 <li>
+                    <img src="G:\html\portfolio_assia\image\sas_logo.png" alt="Excel" class="tool-logo"> SAS
+                </li>
+            </ul>
+        </div>
+       <div class="skill-category">
+    <h2>Statistiques</h2>
+    <ul>
+        <li>Analyse exploratoire de données</li>
+        <li>Tests d'hypothèses</li>
+        <li>Régressions statistiques</li>
+        <li>Visualisation de données</li>
+        <li>Modèles prédictifs</li>
+    </ul>
+</div>
+        <div class="skill-category">
+             <h2>Projets Marquants</h2>
+    <ul>
+        <li><a href="#project-billetterie">Projet Tennis ATP</a></li>
+        <li><a href="#project-kili">Modelisation taux de varicelle</a></li>
+        <li><a href="#project-portfolio">Etude statistique sur le Bonheur Mondial</a></li>
+    </ul>
+        </div>
+    </div>
+</section>
+
+
+
+
+  <section id="languages">
+    <h2>Langues</h2>
+    <div class="languages">
+        <div class="language-card">
+            <div class="language-card-inner">
+                <div class="language-card-front">Français</div>
+                <div class="language-card-back">Natif</div>
+            </div>
+        </div>
+        <div class="language-card">
+            <div class="language-card-inner">
+                <div class="language-card-front">Anglais</div>
+                <div class="language-card-back">Avancé</div>
+            </div>
+        </div>
+        <div class="language-card">
+            <div class="language-card-inner">
+                <div class="language-card-front">Espagnol</div>
+                <div class="language-card-back">Intermédiaire</div>
+            </div>
+        </div>
+        <div class="language-card">
+            <div class="language-card-inner">
+                <div class="language-card-front">Italien</div>
+                <div class="language-card-back">Intermédiaire</div>
+            </div>
+        </div>
+        <div class="language-card">
+            <div class="language-card-inner">
+                <div class="language-card-front">Arabe</div>
+                <div class="language-card-back">Avancé</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <section id="projects">
+    <h2>Mes Projets</h2>
+    <div class="project-container">
+        <div class="project-card" id="project-billetterie">
+            <div class="project-header">
+                <h3 class="project-title">projet Tennis ATP</h3>
+                <a href="file:///G:/e-portfolio2/projet%20Tennis.html" target="_blank" class="project-link">Voir le projet</a>
+            </div>
+            <p> Projet Tennis : Comment les caractéristiques des matchs, comme la surface ou le classement des joueurs, influencent-elles les performances des joueurs et les résultats des matchs ?</p>
+        </div>
+        <div class="project-card" id="project-kili">
+            <div class="project-header">
+                <h3 class="project-title">Etude statistique sur le Bonheur Mondial</h3>
+                <a href="G:\e-portfolio2\rapport_bonheur.pdf" target="_blank" class="project-link">Voir le projet</a>
+            </div>
+            <p>Projet sur le bonheur mondial : Comment le bonheur évolue-t-il dans le temps et quel est l'impact des événements historiques ou sociaux  ?
+</p>
+        </div>
+        <div class="project-card" id="project-portfolio">
+            <div class="project-header">
+                <h3 class="project-title">modélisation et prévision du taux de varicelle en France</h3>
+                <a href="G:\e-portfolio2\rapport_modelisation.pdf" target="_blank" class="project-link">Voir le projet</a>
+            </div>
+            <p>Projet sur la variccelle : Modélisation etPrévision du Tauxd’Incidence de laVaricelle en France</p>
+        </div>
+    </div>
+</section>
+<section id="diplomes">
+    <h2>Diplômes et Formations</h2>
+    <div class="card-container">
+        <!-- Carte Bac -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>Baccalauréat</h3>
+                </div>
+                <div class="card-back">
+                    <p>Spécialités : SES & NSI</p>
+                    <p>Mention Bien(2023)</p>
+                </div>
+            </div>
+        </div>
+        <!-- Carte BUT -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <h3>BUT Sciences des Données</h3>
+                </div>
+                <div class="card-back">
+                    <p>2ᵉ année - Parcours</p>
+                    <p>Exploration et Modélisation Statistique (2025)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="loisirs">
+    <h2>Loisirs</h2>
+    <div class="loisirs-container">
+        <div class="loisir-card">
+            <h3>Crochet</h3>
+            <img src="G:\html\portfolio_assia\image\imag_livre.jpeg" alt="Crochet" />
+        </div>
+        <div class="loisir-card">
+            <h3>Bénévolat</h3>
+            <img src="G:\html\portfolio_assia\image\benevolat_img.jpg" alt="Bénévolat" />
+        </div>
+        <div class="loisir-card">
+            <h3>Lecture</h3>
+            <img src="G:\html\portfolio_assia\image\librooss_photo.jpg" alt="Lecture" />
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+   <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-container">
+        <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-details">
+                <a href="mailto:as.aouimeur@gmail.com" target="_blank">as.aouimeur@gmail.com</a>
+            </div>
+        </div>
+        <div class="contact-card">
+            <div class="contact-icon">🔗</div>
+            <div class="contact-details">
+                <a href="https://www.linkedin.com/in/assia-aouimeur-665a62255" target="_blank">Mon LinkedIn</a>
+            </div>
+        </div>
+        <div class="contact-card">
+            <div class="contact-icon">💻</div>
+            <div class="contact-details">
+                <a href="https://github.com/assiacmyk/assiacmyk" target="_blank">Mon GitHub</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <footer>
+        <p>&copy; 2025 Aouimeur Assia | Data Science Portfolio</p>
+    </footer>
+</body>
+</html>
